@@ -17,7 +17,7 @@ function Update () {
 
     else output.SetActive (true);
     
-    counterValue -= Time.deltaTime;
+    if (counterValue > 0) counterValue -= Time.deltaTime;
 }
 
 
