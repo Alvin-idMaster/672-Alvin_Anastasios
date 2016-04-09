@@ -48,3 +48,9 @@ Temporary Items
 unity_practice_Alvin/Library/
 unity_practice_Alvin/ProjectSettings/
 unity_practice_Alvin/Temp/
+unity_Locompare/Library/AssetServerCacheV3
+unity_Locompare/Library
+unity_Locompare/obj
+unity_Locompare/ProjectSettings
+unity_Locompare/Temp
+*.meta
