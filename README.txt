@@ -1,11 +1,7 @@
-9 Apr 2016: Final design document page had been made on the github wiki.
-
-Design Document Uploaded (06/03/16): Contains our application design process, the UML diagram and the responses from the feedbacks given.
-
-An initial repository for Alvin Herawan and Anastasios Ioannou concerning module 672 of Interaction Design master.
-
-This is a test, uploaded using GitHub Desktop.
-
-UML drawing for the project has been added.
-
-Design Document Uploaded (06/03/16): Contains our application design process, the UML diagram and the responses from the feedbacks given.
+How to test the code:
+1. Install Unity3D.
+2. Download the whole unity_Locompare folder
+3. Open project.
+4. When prompted, choose the the unity_Locompare folder.
+5. Double-click on any scene in the 'Assets > scenes' folder.
+6. View the scripts in the 'Assets > scripts' folder.
