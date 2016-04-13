@@ -6,15 +6,19 @@ import UnityEngine.UI;
 import System.Collections.Generic;
 
 //Declaring variables.
-var LocationPickerLabel : GameObject; 	//To manipulate the texts inside the drop down list.
-private var SelectedLocation : Text;	//Private variable to store the name of a selected location. This needs to be declared as Unity Text and String are two different variable types.
-var LocName : String;					//This will be where the string of a selected location is stored.
+var LocationPickerLabel : GameObject; 			//To manipulate the texts inside the drop down list.
+private var SelectedLocation : Text;			//Private variable to store the name of a selected location. This needs to be declared as Unity Text and String are two different variable types.
+var LocName : String;							//This will be where the string of a selected location is stored.
 
 //These two are related to the markers.
 var markerButton : Button;
 var markerNum : String;
 
-var CurrentlySelected : List.< String >;	//The array variable to store all locations that have been selected throughout.
+var CurrentlySelected : List.< String >;		//The array variable to store all locations that have been selected throughout.
+
+//These two will be to display all selected locations on game screen.
+var displayResults : GameObject;
+private var displayText : Text;
 
 function Start () {
 
@@ -23,21 +27,41 @@ function Start () {
 	SelectedLocation = LocationPickerLabel.GetComponent(UI.Text);
 	LocName = SelectedLocation.text;
 	SelectedLocation.text = "Select a location ...";
+
+	displayText = displayResults.GetComponent(Text);	//Assigning variable to the Text component.
+
+	displayText.text = "";								//Empty the text when there is no location selected.
 }
 
 function Update () {
+
 
 }
 
 //The function that will add a location into the array. This is called via the event system manager in the Unity editor.
 function PushLocation (){
 
-	LocName = SelectedLocation.text;	//So that the last selected location will be the one added to the array.
+	LocName = SelectedLocation.text;			//So that the last selected location will be the one added to the array.
 
-	if (!CurrentlySelected.Contains(LocName)){ //So that when same location is selected, it will not be added again into the array.
+	if (!CurrentlySelected.Contains(LocName)){ 	//So that when same location is selected, it will not be added again into the array.
 		CurrentlySelected.Add(LocName);
+    }
+
+    //After pushing to the array, the results will be displayed.
+    if (CurrentlySelected.Count == 1) displayText.text = "Going to compare " + CurrentlySelected [0];
+
+    if (CurrentlySelected.Count > 1){
+		displayText.text = "Currently comparing:\n";
+
+		for (var i : int = 0; i < CurrentlySelected.Count; i ++){
+
+			displayText.text = displayText.text + CurrentlySelected[i] + "\n";
+
+		}
+
     }
 }
 
+//Function to add marker on the map.
 function PinMarker (){
 }
