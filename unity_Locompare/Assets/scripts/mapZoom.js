@@ -2,6 +2,7 @@
 import UnityEngine.UI;
 
 var mapScale : RectTransform;
+//var markerScale : RectTransform;
 
 var minScale : float;
 var maxScale : float;
@@ -24,6 +25,9 @@ function Start () {
 }
 
 function Update () {
+
+	//markerScale.localScale.x = 1;
+	//markerScale.localScale.y = 1;
 
 	//For PC simulation of zooming in and out using scroll wheel.
 	if(Input.GetAxis("Mouse ScrollWheel") < 0 && mapScale.localScale.x > minScale) {
