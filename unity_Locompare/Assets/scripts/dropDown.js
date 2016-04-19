@@ -20,6 +20,9 @@ var CurrentlySelected : List.< String >;		//The array variable to store all loca
 var displayResults : GameObject;
 private var displayText : Text;
 
+//Compare button that will lead to the table view.
+var compareButton : GameObject;
+
 function Start () {
 
 	//The next 3 lines are to set the drop down list to say "Select a location ..."
@@ -31,6 +34,8 @@ function Start () {
 	displayText = displayResults.GetComponent(Text);	//Assigning variable to the Text component.
 
 	displayText.text = "";								//Empty the text when there is no location selected.
+
+	compareButton.SetActive(false);						//Set the compare button to false to be activated when there are 2 or more locations selected.
 }
 
 function Update () {
@@ -48,10 +53,10 @@ function PushLocation (){
     }
 
     //After pushing to the array, the results will be displayed.
-    if (CurrentlySelected.Count == 1) displayText.text = "Going to compare " + CurrentlySelected [0];
+    if (CurrentlySelected.Count == 1) displayText.text = "Going to compare:\n " + CurrentlySelected [0] + "\n(Select more locations to compare.)";
 
     if (CurrentlySelected.Count > 1){
-		displayText.text = "Currently comparing:\n";
+		displayText.text = "Going to compare:\n";
 
 		for (var i : int = 0; i < CurrentlySelected.Count; i ++){
 
@@ -59,6 +64,9 @@ function PushLocation (){
 
 		}
 
+		displayText.text = displayText.text + "(Tap the 'Compare' button below or select more locations.)";
+
+		compareButton.SetActive(true);
     }
 }
 
