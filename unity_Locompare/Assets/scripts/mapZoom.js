@@ -26,24 +26,20 @@ function Start () {
 
 function Update () {
 
-	markerScale.localScale.x = 1;
-	markerScale.localScale.y = 1;
-
 	//For PC simulation of zooming in and out using scroll wheel.
 	if(Input.GetAxis("Mouse ScrollWheel") < 0 && mapScale.localScale.x > minScale) {
 
 		mapScale.localScale.x -= zoomSpeed;
 		mapScale.localScale.y -= zoomSpeed;
-		markerScale.localScale.x = markerScale.localScale.x / mapScale.localScale.x;
-		markerScale.localScale.y = markerScale.localScale.y / mapScale.localScale.y;
-		
+		markerScale.localScale.x = 1 / mapScale.localScale.x;
+		markerScale.localScale.y = 1 / mapScale.localScale.y;
+	
 	} else if(Input.GetAxis("Mouse ScrollWheel") > 0 && mapScale.localScale.x < maxScale){
 
 		mapScale.localScale.x += zoomSpeed;
 		mapScale.localScale.y += zoomSpeed;
-		markerScale.localScale.x = markerScale.localScale.x / mapScale.localScale.x;
-		markerScale.localScale.y = markerScale.localScale.y / mapScale.localScale.y;
-		
+		markerScale.localScale.x = 1 / mapScale.localScale.x;
+		markerScale.localScale.y = 1 / mapScale.localScale.y;
 	}
 
 	// this part of the script is for touch enabled devices (mobile phone / tablet).
