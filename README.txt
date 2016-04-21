@@ -5,3 +5,6 @@ How to test the code:
 4. When prompted, choose the the unity_Locompare folder.
 5. Double-click on any scene in the 'Assets > scenes' folder.
 6. View the scripts in the 'Assets > scripts' folder.
+
+Tasos Notes:
+For the button test open the folder ''unity-Test 1 Practice Tasos''
