@@ -91,13 +91,11 @@ function PinMarker (){
 	//After tested on the editor, it is set that the size of the RectTransform is 46(width) and 30(height)
 	var markerCloneRect : RectTransform;
 	markerCloneRect = markerClone.GetComponent(RectTransform);
-	//markerCloneRect.offsetMin.x = Random.Range(0.0, 365.0);
+	offset1 = Random.Range(0.0, 365.0);
+	offset2 = Random.Range(0.0, 195.0);
 	markerCloneRect.offsetMin.x = offset1;
-	markerCloneRect.offsetMax.y = offset2;
-	//markerCloneRect.offsetMin.y = 408 - 46 - markerCloneRect.offsetMin.x;
-	//markerCloneRect.offsetMax.y = Random.Range(0.0, 195.0);
-	//markerCloneRect.offsetMax.x = 195 - markerCloneRect.offsetMax.y;
-	markerCloneRect.offsetMax.x = 408 - 46 - markerCloneRect.offsetMin.x;
-	markerCloneRect.offsetMin.y = 195 - markerCloneRect.offsetMax.y;
+	markerCloneRect.offsetMax.y = offset2 * -1;
+	markerCloneRect.offsetMax.x = (408 - 46 - markerCloneRect.offsetMin.x) * -1;
+	markerCloneRect.offsetMin.y = 195 + markerCloneRect.offsetMax.y;
 
 }
