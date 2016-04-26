@@ -11,10 +11,14 @@ private var SelectedLocation : Text;			//Private variable to store the name of a
 var LocName : String;							//This will be where the string of a selected location is stored.
 
 //These two are related to the markers.
-var markerButton : Button;
-var markerNum : String;
+//var markerButton : Button;
+//var markerNum : String;
 
 var CurrentlySelected : List.< String >;		//The array variable to store all locations that have been selected throughout.
+
+var markerPrefab : GameObject;
+var markerButtons : List. <Button>;
+var markerParent : GameObject;
 
 //These two will be to display all selected locations on game screen.
 var displayResults : GameObject;
@@ -22,6 +26,9 @@ private var displayText : Text;
 
 //Compare button that will lead to the table view.
 var compareButton : GameObject;
+
+var offset1 : float;
+var offset2 : float;
 
 function Start () {
 
@@ -72,4 +79,25 @@ function PushLocation (){
 
 //Function to add marker on the map.
 function PinMarker (){
+
+	//Clone a marker from prefab
+	var markerClone : GameObject;
+	markerClone = Instantiate(markerPrefab, transform.position, transform.rotation);
+
+	//Set the cloned marker as a child of the map, so that it will be panned and zoomed together.
+	markerClone.transform.SetParent(markerParent.transform, false);
+
+
+	//After tested on the editor, it is set that the size of the RectTransform is 46(width) and 30(height)
+	var markerCloneRect : RectTransform;
+	markerCloneRect = markerClone.GetComponent(RectTransform);
+	//markerCloneRect.offsetMin.x = Random.Range(0.0, 365.0);
+	markerCloneRect.offsetMin.x = offset1;
+	markerCloneRect.offsetMax.y = offset2;
+	//markerCloneRect.offsetMin.y = 408 - 46 - markerCloneRect.offsetMin.x;
+	//markerCloneRect.offsetMax.y = Random.Range(0.0, 195.0);
+	//markerCloneRect.offsetMax.x = 195 - markerCloneRect.offsetMax.y;
+	markerCloneRect.offsetMax.x = 408 - 46 - markerCloneRect.offsetMin.x;
+	markerCloneRect.offsetMin.y = 195 - markerCloneRect.offsetMax.y;
+
 }
