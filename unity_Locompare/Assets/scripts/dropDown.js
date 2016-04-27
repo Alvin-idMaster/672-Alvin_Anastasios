@@ -58,7 +58,7 @@ function PushLocation (){
     }
 
     //After pushing to the array, the results will be displayed.
-    if (CurrentlySelected.Count == 1) displayText.text = "Going to compare:\n1.) " + CurrentlySelected [0] + "\n(Select more locations to compare.)";
+    if (CurrentlySelected.Count == 1) displayText.text = "Going to compare:\n1.) " + CurrentlySelected [0] + "\n(Select more locations from the drop down list above to compare.)";
 
     if (CurrentlySelected.Count > 1){
 		displayText.text = "Going to compare:\n";
@@ -69,7 +69,7 @@ function PushLocation (){
 
 		}
 
-		displayText.text = displayText.text + "(Tap the 'Compare' button below or select more locations.)";
+		displayText.text = displayText.text + "(Tap the 'Compare' button below or select more locations from the drop down list.)";
 
 		compareButton.SetActive(true);
     }
