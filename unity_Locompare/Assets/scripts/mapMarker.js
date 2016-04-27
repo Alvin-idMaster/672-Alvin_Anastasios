@@ -43,15 +43,23 @@ function Update () {
 
 		mapScale.localScale.x -= zoomSpeed;
 		mapScale.localScale.y -= zoomSpeed;
-		//markerScale.localScale.x = 1 / mapScale.localScale.x;
-		//markerScale.localScale.y = 1 / mapScale.localScale.y;
+
+		for(var m : int = 0 ; m < markerScale.Count; m++)
+    	{
+        	markerScale[m].localScale.x = 1 / mapScale.localScale.x;
+        	markerScale[m].localScale.y = 1 / mapScale.localScale.y;
+   		}
 	
 	} else if(Input.GetAxis("Mouse ScrollWheel") > 0 && mapScale.localScale.x < maxScale){
 
 		mapScale.localScale.x += zoomSpeed;
 		mapScale.localScale.y += zoomSpeed;
-		//markerScale.localScale.x = 1 / mapScale.localScale.x;
-		//markerScale.localScale.y = 1 / mapScale.localScale.y;
+
+		for(var n : int = 0 ; n < markerScale.Count; n++)
+    	{
+        	markerScale[n].localScale.x = 1 / mapScale.localScale.x;
+        	markerScale[n].localScale.y = 1 / mapScale.localScale.y;
+   		}
 	}
 
 	// this part of the script is for touch enabled devices (mobile phone / tablet).
