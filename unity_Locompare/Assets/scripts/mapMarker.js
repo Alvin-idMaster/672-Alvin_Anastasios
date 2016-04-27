@@ -32,6 +32,8 @@ function Start () {
 
 	mapScale = GetComponent(RectTransform);
 
+	//if(markerScale[0] == null) Debug.Log("It's missing!");
+
 }
 
 function Update () {
@@ -79,7 +81,7 @@ function Update () {
 //Function to add marker on the map.
 function PinMarker (){
 
-	//Clone a marker from prefab
+	//Clone a marker from prefab.
 	var markerClone : GameObject;
 	markerClone = Instantiate(markerPrefab, transform.position, transform.rotation);
 
@@ -87,11 +89,14 @@ function PinMarker (){
 	markerClone.transform.SetParent(markerParent.transform, false);
 
 
-	//After tested on the editor, it is set that the size of the RectTransform is 46(width) and 30(height)
+	//After tested on the editor, it is set that the size of the RectTransform is 46(width) and 30(height).
 	var markerCloneRect : RectTransform;
 	markerCloneRect = markerClone.GetComponent(RectTransform);
 
-	//Setting the location of the marker. Right now it is random because it is just a proof-of-concept that the marker can be placed anywhere within the map
+	//Add the RectTransform to an array list so that it can be zoomed in and out.
+	markerScale.Add(markerCloneRect);
+
+	//Setting the location of the marker. Right now it is random because it is just a proof-of-concept that the marker can be placed anywhere within the map.
 	offset1 = Random.Range(0.0, 365.0);
 	offset2 = Random.Range(0.0, 195.0);
 	markerCloneRect.offsetMin.x = offset1;
@@ -101,4 +106,15 @@ function PinMarker (){
 
 	//Add the newly instantiated button to the array so that it is saved and can be deleted later on.
 	markerButtons.Add(markerClone);
+}
+
+function UpdatePinNumber (){
+
+	for(var i : int = 0 ; i < markerButtons.Count; i++)
+    {
+        var markerButtonText : Text;
+        markerButtonText = markerButtons[i].GetComponentInChildren(UI.Text);
+        markerButtonText.text = (i+1).ToString();
+    }
+
 }

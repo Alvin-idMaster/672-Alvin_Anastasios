@@ -24,6 +24,7 @@ private var displayText : Text;
 //Compare button that will lead to the table view.
 var compareButton : GameObject;
 
+var mapMarker : mapMarker;
 
 function Start () {
 
@@ -52,17 +53,19 @@ function PushLocation (){
 
 	if (!CurrentlySelected.Contains(LocName)){ 	//So that when same location is selected, it will not be added again into the array.
 		CurrentlySelected.Add(LocName);
+		mapMarker.PinMarker();
+		mapMarker.UpdatePinNumber();
     }
 
     //After pushing to the array, the results will be displayed.
-    if (CurrentlySelected.Count == 1) displayText.text = "Going to compare:\n " + CurrentlySelected [0] + "\n(Select more locations to compare.)";
+    if (CurrentlySelected.Count == 1) displayText.text = "Going to compare:\n1.) " + CurrentlySelected [0] + "\n(Select more locations to compare.)";
 
     if (CurrentlySelected.Count > 1){
 		displayText.text = "Going to compare:\n";
 
 		for (var i : int = 0; i < CurrentlySelected.Count; i ++){
 
-			displayText.text = displayText.text + CurrentlySelected[i] + "\n";
+			displayText.text = displayText.text + (i+1) + ".) " + CurrentlySelected[i] + "\n";
 
 		}
 

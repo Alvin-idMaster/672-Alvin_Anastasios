@@ -18,7 +18,7 @@ function Start () {
 function Update () {
 
 	//Debug.Log(myRect.offsetMin);	//offsetMin.x = left limit, range 0 until 365
-	Debug.Log(myRect.offsetMax);	//offsetMax.y = Top limit, range 0 until -194
+	//Debug.Log(myRect.offsetMax);	//offsetMax.y = Top limit, range 0 until -194
 	//Debug.Log(myRect.sizeDelta); 	//-365, -195
 
 }
