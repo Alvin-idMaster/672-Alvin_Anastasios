@@ -32,8 +32,6 @@ function Start () {
 
 	mapScale = GetComponent(RectTransform);
 
-	//if(markerScale[0] == null) Debug.Log("It's missing!");
-
 }
 
 function Update () {
@@ -44,22 +42,14 @@ function Update () {
 		mapScale.localScale.x -= zoomSpeed;
 		mapScale.localScale.y -= zoomSpeed;
 
-		for(var m : int = 0 ; m < markerScale.Count; m++)
-    	{
-        	markerScale[m].localScale.x = 1 / mapScale.localScale.x;
-        	markerScale[m].localScale.y = 1 / mapScale.localScale.y;
-   		}
+		RescaleMapMarkers();
 	
 	} else if(Input.GetAxis("Mouse ScrollWheel") > 0 && mapScale.localScale.x < maxScale){
 
 		mapScale.localScale.x += zoomSpeed;
 		mapScale.localScale.y += zoomSpeed;
 
-		for(var n : int = 0 ; n < markerScale.Count; n++)
-    	{
-        	markerScale[n].localScale.x = 1 / mapScale.localScale.x;
-        	markerScale[n].localScale.y = 1 / mapScale.localScale.y;
-   		}
+   		RescaleMapMarkers();
 	}
 
 	// this part of the script is for touch enabled devices (mobile phone / tablet).
@@ -75,12 +65,14 @@ function Update () {
 		{
 			mapScale.localScale.x -= zoomSpeed;
 			mapScale.localScale.y -= zoomSpeed;
+			RescaleMapMarkers();
 		}
 
 		if ((touchDelta + minDistance > 5) && (speedTouch0 > minPinchSpeed) && (speedTouch1 > minPinchSpeed))
 		{
 			mapScale.localScale.x += zoomSpeed;
 			mapScale.localScale.y += zoomSpeed;
+			RescaleMapMarkers();
 		}
 	}
 
@@ -95,7 +87,6 @@ function PinMarker (){
 
 	//Set the cloned marker as a child of the map, so that it will be panned and zoomed together.
 	markerClone.transform.SetParent(markerParent.transform, false);
-
 
 	//After tested on the editor, it is set that the size of the RectTransform is 46(width) and 30(height).
 	var markerCloneRect : RectTransform;
@@ -114,6 +105,7 @@ function PinMarker (){
 
 	//Add the newly instantiated button to the array so that it is saved and can be deleted later on.
 	markerButtons.Add(markerClone);
+	RescaleMapMarkers();
 }
 
 function UpdatePinNumber (){
@@ -124,5 +116,15 @@ function UpdatePinNumber (){
         markerButtonText = markerButtons[i].GetComponentInChildren(UI.Text);
         markerButtonText.text = (i+1).ToString();
     }
+
+}
+
+function RescaleMapMarkers (){
+
+	for(var m : int = 0 ; m < markerScale.Count; m++)
+	{
+    	markerScale[m].localScale.x = 1 / mapScale.localScale.x;
+    	markerScale[m].localScale.y = 1 / mapScale.localScale.y;
+	}
 
 }
