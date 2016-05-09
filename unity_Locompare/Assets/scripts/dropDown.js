@@ -10,12 +10,7 @@ var LocationPickerLabel : GameObject; 			//To manipulate the texts inside the dr
 private var SelectedLocation : Text;			//Private variable to store the name of a selected location. This needs to be declared as Unity Text and String are two different variable types.
 var LocName : String;							//This will be where the string of a selected location is stored.
 
-//These two are related to the markers.
-//var markerButton : Button;
-//var markerNum : String;
-
 var CurrentlySelected : List.< String >;		//The array variable to store all locations that have been selected throughout.
-
 
 //These two will be to display all selected locations on game screen.
 var displayResults : GameObject;
@@ -58,6 +53,19 @@ function PushLocation (){
     }
 
     //After pushing to the array, the results will be displayed.
+    DisplayComparisons();
+
+}
+
+function RemoveLocation (markerId : int){
+
+	CurrentlySelected.RemoveAt(markerId);
+	DisplayComparisons();
+
+}
+
+function DisplayComparisons (){
+
     if (CurrentlySelected.Count == 1) displayText.text = "Going to compare:\n1.) " + CurrentlySelected [0] + "\n(Select more locations from the drop down list above to compare.)";
 
     if (CurrentlySelected.Count > 1){
@@ -73,5 +81,5 @@ function PushLocation (){
 
 		compareButton.SetActive(true);
     }
-}
 
+}

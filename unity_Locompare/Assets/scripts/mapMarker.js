@@ -95,7 +95,8 @@ function PinMarker (){
 	//Add the RectTransform to an array list so that it can be zoomed in and out.
 	markerScale.Add(markerCloneRect);
 
-	//Setting the location of the marker. Right now it is random because it is just a proof-of-concept that the marker can be placed anywhere within the map.
+	//Setting the location of the marker.
+	//Right now, it is random because it is just a proof-of-concept that the marker can be placed anywhere within the map.
 	offset1 = Random.Range(0.0, 365.0);
 	offset2 = Random.Range(0.0, 195.0);
 	markerCloneRect.offsetMin.x = offset1;
@@ -105,16 +106,21 @@ function PinMarker (){
 
 	//Add the newly instantiated button to the array so that it is saved and can be deleted later on.
 	markerButtons.Add(markerClone);
+
+	//Rescale the newly created map marker to suit the current zoom level.
 	RescaleMapMarkers();
+
 }
 
 function UpdatePinNumber (){
 
 	for(var i : int = 0 ; i < markerButtons.Count; i++)
     {
-        var markerButtonText : Text;
-        markerButtonText = markerButtons[i].GetComponentInChildren(UI.Text);
-        markerButtonText.text = (i+1).ToString();
+        var markerButtonText : Text;											//These 3 lines reorder the texts
+        markerButtonText = markerButtons[i].GetComponentInChildren(UI.Text);	//which are displaying the marker
+        markerButtonText.text = (i+1).ToString();								//according to the order each location is selected.
+
+        markerButtons[i].GetComponent.<markerDel>().markerId = i;				//This line determines an id, which is stored in each marker, so that it will delete the correct marker.
     }
 
 }
@@ -126,5 +132,13 @@ function RescaleMapMarkers (){
     	markerScale[m].localScale.x = 1 / mapScale.localScale.x;
     	markerScale[m].localScale.y = 1 / mapScale.localScale.y;
 	}
+
+}
+
+function RemoveMapMarker (markerId : int){
+
+	markerScale.RemoveAt(markerId);
+	markerButtons.RemoveAt(markerId);
+	UpdatePinNumber();
 
 }
