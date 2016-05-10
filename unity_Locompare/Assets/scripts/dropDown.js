@@ -14,10 +14,8 @@ var CurrentlySelected : List.< String >;		//The array variable to store all loca
 
 //These two will be to display all selected locations on game screen.
 var displayResults : GameObject;
+private var displayRect : RectTransform;
 private var displayText : Text;
-
-//Compare button that will lead to the table view.
-var compareButton : GameObject;
 
 var mapMarker : mapMarker;
 
@@ -31,13 +29,12 @@ function Start () {
 
 	displayText = displayResults.GetComponent(Text);	//Assigning variable to the Text component.
 
-	displayText.text = "";								//Empty the text when there is no location selected.
+	displayText.text = "Welcome to LOCOMPARE!\nPlease select at least two locations from the drop down list above.";
 
-	compareButton.SetActive(false);						//Set the compare button to false to be activated when there are 2 or more locations selected.
+	displayRect = displayResults.GetComponent(RectTransform);
 }
 
 function Update () {
-
 
 }
 
@@ -52,6 +49,8 @@ function PushLocation (){
 		mapMarker.UpdatePinNumber();
     }
 
+   	SelectedLocation.text = "Select more location ...";
+
     //After pushing to the array, the results will be displayed.
     DisplayComparisons();
 
@@ -60,26 +59,31 @@ function PushLocation (){
 function RemoveLocation (markerId : int){
 
 	CurrentlySelected.RemoveAt(markerId);
+
+	if (CurrentlySelected.Count == 0) SelectedLocation.text = "Select a location ...";
+
 	DisplayComparisons();
+
+	//if (CurrentlySelected.Count <= 8) displayRect.offsetMin.y = -3;
 
 }
 
 function DisplayComparisons (){
 
-    if (CurrentlySelected.Count == 1) displayText.text = "Going to compare:\n1.) " + CurrentlySelected [0] + "\n(Select more locations from the drop down list above to compare.)";
+    if (CurrentlySelected.Count == 1) displayText.text = "Going to compare:\n1.) " + CurrentlySelected [0] + "\n\n(Select more locations from the drop down list above to start comparing.)";
 
     if (CurrentlySelected.Count > 1){
-		displayText.text = "Going to compare:\n";
+		displayText.text = "Comparing:\n";
 
 		for (var i : int = 0; i < CurrentlySelected.Count; i ++){
 
-			displayText.text = displayText.text + (i+1) + ".) " + CurrentlySelected[i] + "\n";
+			displayText.text = displayText.text + (i+1) + ".| " + CurrentlySelected[i] + "\n----------------------------------------------------------------------------\n";
 
 		}
 
-		displayText.text = displayText.text + "(Tap the 'Compare' button below or select more locations from the drop down list.)";
-
-		compareButton.SetActive(true);
+		displayText.text = displayText.text + "\nYou can still select more locations from the drop down list.";
     }
+
+    //if (CurrentlySelected.Count > 8) displayRect.offsetMin.y -= 40;
 
 }
