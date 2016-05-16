@@ -29,8 +29,6 @@ function Update () {
 	//When this variable is more than 0, it will be deleted when this object is pressed. But if not tapped fast enough, it won't be deleted.
 	if(doubleTapDetector > 0) doubleTapDetector --;
 
-	//Debug.Log(doubleTapDetector);
-
 }
 
 function DeleteMarker (){

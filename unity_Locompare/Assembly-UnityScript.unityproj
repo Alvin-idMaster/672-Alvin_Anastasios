@@ -49,6 +49,7 @@
      <Compile Include="Assets\scripts\dropDown_height.js" />
      <Compile Include="Assets\scripts\mapMarker.js" />
      <Compile Include="Assets\scripts\markerDel.js" />
+     <Compile Include="Assets\scripts\markerTextSize.js" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

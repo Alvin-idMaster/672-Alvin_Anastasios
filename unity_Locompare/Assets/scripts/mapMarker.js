@@ -95,6 +95,7 @@ function PinMarker (){
 	//Add the RectTransform to an array list so that it can be zoomed in and out.
 	markerScale.Add(markerCloneRect);
 
+	/*
 	//Setting the location of the marker.
 	//Right now, it is random because it is just a proof-of-concept that the marker can be placed anywhere within the map.
 	offset1 = Random.Range(0.0, 365.0);
@@ -103,6 +104,19 @@ function PinMarker (){
 	markerCloneRect.offsetMax.y = offset2 * -1;
 	markerCloneRect.offsetMax.x = (408 - 46 - markerCloneRect.offsetMin.x) * -1;
 	markerCloneRect.offsetMin.y = 195 + markerCloneRect.offsetMax.y;
+	*/
+
+	//NOTE: offsetMax.x = Right *-1, Max.y = Top *-1, Min.x = left, Min.y = Bottom. 
+
+	offset1 = Random.Range(0.0, 365.0);
+	offset2 = Random.Range(0.0, 195.0);
+	Debug.Log(offset1 + ", " + offset2);
+	markerCloneRect.offsetMin.x = offset1;
+	markerCloneRect.offsetMax.y = offset2 * -1;
+	markerCloneRect.offsetMax.x = offset1;
+	markerCloneRect.offsetMin.y = offset2 * -1;
+
+
 
 	//Add the newly instantiated button to the array so that it is saved and can be deleted later on.
 	markerButtons.Add(markerClone);
