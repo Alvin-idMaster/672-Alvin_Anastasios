@@ -17,6 +17,10 @@ var displayResults : GameObject;
 private var displayRect : RectTransform;
 private var displayText : Text;
 
+var displayFood : GameObject;
+private var foodText : Text;
+var foodData : List.<String>;
+
 var mapMarker : mapMarker;
 
 function Start () {
@@ -30,6 +34,10 @@ function Start () {
 	displayText = displayResults.GetComponent(Text);	//Assigning variable to the Text component.
 
 	displayText.text = "Welcome to LOCOMPARE!\nPlease select at least two locations from the drop down list above.";
+
+	foodText = displayFood.GetComponent(Text);
+
+	foodText.text = " ";
 
 	displayRect = displayResults.GetComponent(RectTransform);
 }
@@ -53,6 +61,7 @@ function PushLocation (){
 
     //After pushing to the array, the results will be displayed.
     DisplayComparisons();
+    DisplayFood();
 
 }
 
@@ -63,8 +72,7 @@ function RemoveLocation (markerId : int){
 	if (CurrentlySelected.Count == 0) SelectedLocation.text = "Select a location ...";
 
 	DisplayComparisons();
-
-	//if (CurrentlySelected.Count <= 8) displayRect.offsetMin.y = -3;
+	DisplayFood();
 
 }
 
@@ -81,9 +89,20 @@ function DisplayComparisons (){
 
 		}
 
-		displayText.text = displayText.text + "\nYou can still select more locations from the drop down list.";
+		displayText.text = displayText.text + "\nYou can still select more locations from the drop down list.\n\nDouble tap a pin on the map to delete a location.\n";
     }
 
     //if (CurrentlySelected.Count > 8) displayRect.offsetMin.y -= 40;
 
+}
+
+function DisplayFood (){
+
+	foodText.text = "Food\n";
+
+	for (var fplus : int = 1; fplus < CurrentlySelected.Count + 1; fplus ++){
+
+			foodText.text = foodText.text + foodData[fplus%10] + "\n\n";
+
+		}
 }
