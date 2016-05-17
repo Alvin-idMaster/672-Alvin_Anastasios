@@ -61,14 +61,14 @@ function Update () {
 		speedTouch0 = Input.GetTouch(0).deltaPosition.magnitude / Input.GetTouch(0).deltaTime;
 		speedTouch1 = Input.GetTouch(1).deltaPosition.magnitude / Input.GetTouch(1).deltaTime;
 		
-		if ((touchDelta + minDistance <= 5) && (speedTouch0 > minPinchSpeed) && (speedTouch1 > minPinchSpeed))
+		if ((touchDelta + minDistance <= 5) && (speedTouch0 > minPinchSpeed) && (speedTouch1 > minPinchSpeed) && mapScale.localScale.x > minScale)
 		{
 			mapScale.localScale.x -= zoomSpeed;
 			mapScale.localScale.y -= zoomSpeed;
 			RescaleMapMarkers();
 		}
 
-		if ((touchDelta + minDistance > 5) && (speedTouch0 > minPinchSpeed) && (speedTouch1 > minPinchSpeed))
+		if ((touchDelta + minDistance > 5) && (speedTouch0 > minPinchSpeed) && (speedTouch1 > minPinchSpeed)&& mapScale.localScale.x < maxScale)
 		{
 			mapScale.localScale.x += zoomSpeed;
 			mapScale.localScale.y += zoomSpeed;
