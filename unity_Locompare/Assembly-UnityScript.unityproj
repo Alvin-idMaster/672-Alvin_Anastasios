@@ -45,11 +45,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\scripts\TextSizeScaler.js" />
-     <Compile Include="Assets\scripts\dropDown.js" />
-     <Compile Include="Assets\scripts\dropDown_height.js" />
-     <Compile Include="Assets\scripts\mapMarker.js" />
-     <Compile Include="Assets\scripts\markerDel.js" />
+     <Compile Include="Assets\scripts\MapView\dropDown_Map.js" />
+     <Compile Include="Assets\scripts\MapView\mapZoom.js" />
+     <Compile Include="Assets\scripts\TableView\TextSizeScaler.js" />
+     <Compile Include="Assets\scripts\TableView\dropDown.js" />
+     <Compile Include="Assets\scripts\TableView\dropDown_height.js" />
+     <Compile Include="Assets\scripts\TableView\mapMarker.js" />
+     <Compile Include="Assets\scripts\TableView\markerDel.js" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
