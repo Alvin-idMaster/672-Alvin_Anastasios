@@ -109,7 +109,9 @@ function PinMarker (){
 	//NOTE: offsetMax.x = Right *-1, Max.y = Top *-1, Min.x = left, Min.y = Bottom. 
 
 	offset1 = Random.Range(0.0, 365.0);
+	offset1 = offset1 * Screen.width / 410;
 	offset2 = Random.Range(0.0, 195.0);
+	offset2 = offset2 * Screen.width / 410;
 	Debug.Log(offset1 + ", " + offset2);
 	markerCloneRect.offsetMin.x = offset1;
 	markerCloneRect.offsetMax.y = offset2 * -1;

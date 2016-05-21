@@ -15,19 +15,19 @@ function Start () {
 
 function Update () {
 
-	if (DeviceOrientation.Portrait || DeviceOrientation.PortraitUpsideDown){
+	if (Input.deviceOrientation == DeviceOrientation.Portrait || Input.deviceOrientation == DeviceOrientation.PortraitUpsideDown){
 
-		if(currentScene == "tableView_portrait") loaderTimer = 0;
+		//if(currentScene == "tableView_portrait") loaderTimer = 0;
 
-		if(currentScene == "mapView_landscape") loaderTimer += Time.deltaTime * 1;
+		if(currentScene == "mapView_landscape") SceneManager.LoadScene("tableView_portrait"); //loaderTimer += Time.deltaTime * 1;
 
 	}
 
-	if (DeviceOrientation.LandscapeRight || DeviceOrientation.LandscapeLeft){
+	if (Input.deviceOrientation == DeviceOrientation.LandscapeRight || Input.deviceOrientation == DeviceOrientation.LandscapeLeft){
 
-		if(currentScene == "tableView_portrait") loaderTimer += Time.deltaTime * 1;
+		if(currentScene == "tableView_portrait") SceneManager.LoadScene("mapView_landscape"); //loaderTimer += Time.deltaTime * 1;
 
-		if(currentScene == "mapView_landscape") loaderTimer = 0;
+		//if(currentScene == "mapView_landscape") loaderTimer = 0;
 
 	}
 
