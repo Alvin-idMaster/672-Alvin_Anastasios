@@ -68,7 +68,7 @@ function Start () {
 }
 
 function Update () {
-	Debug.Log(displayRect.offsetMax);
+
 }
 
 //The function that will add a location into the array. This is called via the event system manager in the Unity editor.
