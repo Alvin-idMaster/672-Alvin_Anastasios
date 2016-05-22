@@ -1,8 +1,13 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\MapView\dropDown_Map.js">
+﻿<Properties StartupItem="Assembly-UnityScript.unityproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\TableView\mapMarker.js">
     <Files>
-      <File FileName="Assets\scripts\MapView\dropDown_Map.js" Line="1" Column="1" />
+      <File FileName="Assets\scripts\MapView\dropDown_Map.js" Line="6" Column="1" />
+      <File FileName="Assets\scripts\MapView\factorChooser.js" Line="37" Column="15" />
+      <File FileName="Assets\scripts\TableView\dropDown.js" Line="71" Column="1" />
+      <File FileName="Assets\scripts\sceneSwitch.js" Line="22" Column="89" />
+      <File FileName="Assets\scripts\MapView\TextSizeScaler_landscape.js" Line="12" Column="48" />
+      <File FileName="Assets\scripts\TableView\mapMarker.js" Line="114" Column="41" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
